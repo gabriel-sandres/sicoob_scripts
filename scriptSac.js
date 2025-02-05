@@ -7,7 +7,7 @@ function copyToClipboard(elementId) {
     console.log("Copiado pelo botão: " + copyText.value);
   }
 }
-
+ 
 // Função de copiar texto ao clicar no campo
 function copyOnClick(event) {
   var copyText = event.target;
@@ -15,13 +15,13 @@ function copyOnClick(event) {
   document.execCommand("copy");
   console.log("Copiado com clique: " + copyText.value);
 }
-
+ 
 const inputs = document.querySelectorAll('input[type="text"]');
-
+ 
 inputs.forEach(input => {
   input.addEventListener('click', copyOnClick);
 });
-
+ 
 // Função de copiar texto ao focar no campo
 function copyOnFocus(elementId) {
   var copyText = document.getElementById(elementId);
@@ -31,7 +31,7 @@ function copyOnFocus(elementId) {
     console.log("Copiado com foco: " + copyText.value);
   }
 }
-
+ 
 // Função de preencher o dropdown de "Navegação"
 function populateDropdown() {
   var caminhoElement = document.getElementById('Caminho');
@@ -39,9 +39,9 @@ function populateDropdown() {
     var caminho = caminhoElement.value;
     var caminhoArray = caminho.split(',');
     var select = document.getElementById('navegacaoURA');
-
+ 
     select.innerHTML = '';
-
+ 
     var defaultOption = document.createElement('option');
     defaultOption.value = "";
     defaultOption.text = "Navegação:";
@@ -49,7 +49,7 @@ function populateDropdown() {
     defaultOption.disabled = true;
     defaultOption.style.color = "#000000";
     select.appendChild(defaultOption);
-
+ 
     caminhoArray.forEach(function (item) {
       var option = document.createElement('option');
       option.value = item.trim();
@@ -60,16 +60,16 @@ function populateDropdown() {
     });
   }
 }
-
+ 
 window.onload = function () {
   // Preencher dropdown
   populateDropdown();
-
+ 
   // Não exibir mesma skill
   const skillValueElement = document.getElementById('SkillT');
   const select = document.getElementById('ListaTransf');
   const options = select.querySelectorAll('option');
-
+ 
   if (skillValueElement) {
     const skillValue = skillValueElement.value;
     options.forEach(option => {
@@ -80,14 +80,14 @@ window.onload = function () {
       }
     });
   }
-
+ 
   // Exibir skill de entrada
   const skillOrigemElement = document.getElementById('SkillOrigem');
   let skillFormatada = "";
-
+ 
   if (skillOrigemElement) {
     let skillOrigem = skillOrigemElement.value;
-
+ 
     switch (skillOrigem) {
       case "25166183":
         skillFormatada = "25166183 - TER SAC";
@@ -99,7 +99,7 @@ window.onload = function () {
         skillFormatada = " ";
         break;
     }
-
+ 
     const origemElement = document.getElementById('Origem');
     if (origemElement) {
       origemElement.value = skillFormatada;
@@ -108,15 +108,15 @@ window.onload = function () {
     }
   }
 };
-
+ 
 // Popup Confirmação Transferência
 function showPopup() {
   let opTransf = document.getElementById('ListaTransf').value;
   console.log(opTransf);
-
+ 
   if (opTransf != "") {
     let transfSkill = "";
-
+ 
     switch (opTransf) {
       case "SacContestacao":
         transfSkill = "25166580 - SAC Contestação";
@@ -132,6 +132,9 @@ function showPopup() {
         break;
       case "UraCoopcerto":
         transfSkill = "URA COOPCERTO";
+        break;
+      case "1":
+        transfSkill = "1 - Retenção Consórcio";
         break;
       case "Poupanca":
         transfSkill = "POUPANÇA";
@@ -170,7 +173,7 @@ function showPopup() {
         transfSkill = "";
         break;
     }
-
+ 
     const result = confirm("Realmente deseja transferir para " + transfSkill + "?");
     if (result) {
       executarFuncao();
@@ -179,35 +182,35 @@ function showPopup() {
     alert("Nenhuma opção selecionada.");
   }
 }
-
+ 
 function executarFuncao() {
-  let opTransf = document.getElementById('ListaTransf').value;
-  console.log('Função executada!');
-
-  // Alterando o valor e um atributo de data para capturar no backend
-  let button = document.getElementById('openConfirmation');
-  button.setAttribute("data-status", "transf"); // Melhor alternativa
-  button.value = "transf"; // Pode não refletir corretamente no HTML
-
-  console.log('Botão atualizado:', button.value, button.getAttribute("data-status"));
+  let selectElement = document.getElementById('ListaTransf');
+  if (selectElement) {
+    let opTransf = selectElement.value;
+    console.log('Função executada!');
+    document.getElementById('openConfirmation').value = "transf";
+  } else {
+    console.warn("Elemento 'ListaTransf' não encontrado.");
+  }
 }
-
+ 
+ 
 document.getElementById('openConfirmation').addEventListener('click', showPopup);
-
+ 
 // Botão "Pesquisa"
 document.getElementById("btnPesquisa").addEventListener("click", function () {
   this.value = "pesquisa";
 });
-
+ 
 // Habilitar/desabilitar botão baseado na seleção
 document.addEventListener('DOMContentLoaded', function() {
   const selectElement = document.getElementById('ListaTransf');
   const button = document.getElementById('openConfirmation');
-
+ 
   // Iniciar com o botão desabilitado
   button.disabled = true;
   button.style.cursor = "not-allowed";
-
+ 
   // Adicionar evento para habilitar/desabilitar o botão quando houver mudança no select
   selectElement.addEventListener('change', function() {
     if (selectElement.value !== "") {
@@ -219,8 +222,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
-
-
+ 
+ 
 // Opções para o select
 const allOptions = [
   { value: "", text: "Lista de Transferência:" },
@@ -241,19 +244,19 @@ const allOptions = [
   { value: "UraSipag2", text: "URA SIPAG 2.0" },
   { value: "SacContestacao", text: "SAC_CONTESTAÇÃO" }
 ];
-
+ 
 // Obter o valor do input SkillT
 const skillValue = document.getElementById("SkillT").value;
-
+ 
 // Obter o select
 const select = document.getElementById("ListaTransf");
-
+ 
 // Limpar o select para evitar duplicação
 select.innerHTML = "";
-
+ 
 // Filtrar as opções para remover a que está em skillValue
 const optionsToShow = allOptions.filter(option => option.value !== skillValue);
-
+ 
 // Adicionar as opções ao select
 optionsToShow.forEach(option => {
   const opt = document.createElement("option");
