@@ -187,13 +187,35 @@ function confirmTransfer() {
   const opTransf = document.getElementById('ListaTransf').value;
   if (!opTransf) return alert("Nenhuma opção selecionada.");
  
-  const skillName = skillConfig.skills[opTransf];
+  const skillConfig = {
+    skills: {
+      "SacContestacao": "25166580 - SAC Contestação",
+      "RetencaoSipag": "23121572 - Retenção Sipag",
+      "ConsorcioRetencao": " - Retenção Consórcio",
+      "UraPuc": "URA PUC",
+      "UraCoopcerto": "URA COOPCERTO",
+      "1": "1 - Retenção Consórcio",
+      "Poupanca": "POUPANÇA",
+      "RetencaoSeguros": "RETENÇÃO SEGUROS",
+      "RetencaoCartao": "RETENÇÃO CARTÃO",
+      "UraCartoes": "URA CARTÕES",
+      "UraCartoesBlack": "URA CARTÕES BLACK",
+      "UraConsorcio": "URA Consórcio",
+      "UraCoopera": "URA COOPERA",
+      "UraCartoesCresol": "URA CARTÕES CRESOL",
+      "UraLojistaCabal": "URA LOJISTA CABAL",
+      "UraSipag1": "URA SIPAG 1.0",
+      "UraSipag2": "URA SIPAG 2.0"
+    }
+  };
  
-  if (confirm(`Realmente deseja transferir para ${skillName}?`)) {
+  const transfSkill = skillConfig.skills[opTransf];
+  if (transfSkill) {
     document.getElementById('openConfirmation').value = "transf";
-    console.log('Transferência confirmada para:', skillName);
+    console.log('Transferência confirmada para:', transfSkill);
   }
 }
+ 
  
  
 document.getElementById('openConfirmation').addEventListener('click', showPopup);
