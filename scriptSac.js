@@ -183,14 +183,15 @@ function showPopup() {
   }
 }
  
-function executarFuncao() {
-  let selectElement = document.getElementById('ListaTransf');
-  if (selectElement) {
-    let opTransf = selectElement.value;
-    console.log('Função executada!');
+function confirmTransfer() {
+  const opTransf = document.getElementById('ListaTransf').value;
+  if (!opTransf) return alert("Nenhuma opção selecionada.");
+ 
+  const skillName = skillConfig.skills[opTransf];
+ 
+  if (confirm(`Realmente deseja transferir para ${skillName}?`)) {
     document.getElementById('openConfirmation').value = "transf";
-  } else {
-    console.warn("Elemento 'ListaTransf' não encontrado.");
+    console.log('Transferência confirmada para:', skillName);
   }
 }
  
