@@ -176,7 +176,7 @@ function showPopup() {
  
     const result = confirm("Realmente deseja transferir para " + transfSkill + "?");
     if (result) {
-      executarFuncao();
+      confirmTransfer();
     }
   } else {
     alert("Nenhuma opção selecionada.");
