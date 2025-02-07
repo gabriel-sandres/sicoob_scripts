@@ -265,8 +265,29 @@ const allOptions = [
   { value: "UraLojistaCabal", text: "URA LOJISTA CABAL" },
   { value: "UraSipag1", text: "URA SIPAG 1.0" },
   { value: "UraSipag2", text: "URA SIPAG 2.0" },
-  { value: "SacContestacao", text: "SAC_CONTESTAÇÃO" }
+  { value: "SacContestacao", text: "SAC_CONTESTAÇÃO", requiresSkill: "25166580" }
 ];
+ 
+// Variável global
+const globalSkill = "25166580"; // Defina aqui conforme necessário
+ 
+// Filtrar opções com base na skill
+const filteredOptions = allOptions.filter(option =>
+  !option.requiresSkill || option.requiresSkill === globalSkill
+);
+ 
+// Renderizar no select
+const selectElement = document.createElement("select");
+ 
+filteredOptions.forEach(option => {
+  const optionElement = document.createElement("option");
+  optionElement.value = option.value;
+  optionElement.textContent = option.text;
+  selectElement.appendChild(optionElement);
+});
+ 
+// Adiciona o select ao body ou a outro container
+document.body.appendChild(selectElement);
  
 // Obter o valor do input SkillT
 const skillValue = document.getElementById("SkillT").value;
@@ -287,3 +308,4 @@ optionsToShow.forEach(option => {
   opt.textContent = option.text;
   select.appendChild(opt);
 });
+ 
