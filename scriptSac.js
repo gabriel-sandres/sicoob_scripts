@@ -2,35 +2,24 @@
 function copyToClipboard(elementId) {
   var copyText = document.getElementById(elementId);
   if (copyText) {
-    copyText.select();
-    document.execCommand("copy");
-    console.log("Copiado pelo botão: " + copyText.value);
+    navigator.clipboard.writeText(copyText.value).then(() => {
+      console.log("Copiado pelo botão: " + copyText.value);
+    }).catch(err => console.error("Erro ao copiar: ", err));
   }
 }
  
 // Função de copiar texto ao clicar no campo
 function copyOnClick(event) {
   var copyText = event.target;
-  copyText.select();
-  document.execCommand("copy");
-  console.log("Copiado com clique: " + copyText.value);
+  navigator.clipboard.writeText(copyText.value).then(() => {
+    console.log("Copiado com clique: " + copyText.value);
+  }).catch(err => console.error("Erro ao copiar: ", err));
 }
  
 const inputs = document.querySelectorAll('input[type="text"]');
- 
 inputs.forEach(input => {
   input.addEventListener('click', copyOnClick);
 });
- 
-// Função de copiar texto ao focar no campo
-function copyOnFocus(elementId) {
-  var copyText = document.getElementById(elementId);
-  if (copyText) {
-    copyText.select();
-    document.execCommand("copy");
-    console.log("Copiado com foco: " + copyText.value);
-  }
-}
  
 // Função de preencher o dropdown de "Navegação"
 function populateDropdown() {
@@ -47,7 +36,6 @@ function populateDropdown() {
     defaultOption.text = "Navegação:";
     defaultOption.selected = true;
     defaultOption.disabled = true;
-    defaultOption.style.color = "#000000";
     select.appendChild(defaultOption);
  
     caminhoArray.forEach(function (item) {
@@ -55,7 +43,6 @@ function populateDropdown() {
       option.value = item.trim();
       option.text = item.trim();
       option.disabled = true;
-      option.style.color = "#000000";
       select.appendChild(option);
     });
   }
@@ -112,67 +99,9 @@ window.onload = function () {
 // Popup Confirmação Transferência
 function showPopup() {
   let opTransf = document.getElementById('ListaTransf').value;
-  console.log(opTransf);
  
   if (opTransf != "") {
-    let transfSkill = "";
- 
-    switch (opTransf) {
-      case "SacContestacao":
-        transfSkill = "25166580 - SAC Contestação";
-        break;
-      case "RetencaoSipag":
-        transfSkill = "23121572 - Retenção Sipag";
-        break;
-      case "ConsorcioRetencao":
-        transfSkill = " - Retenção Consórcio";
-        break;
-      case "UraPuc":
-        transfSkill = "URA PUC";
-        break;
-      case "UraCoopcerto":
-        transfSkill = "URA COOPCERTO";
-        break;
-      case "1":
-        transfSkill = "1 - Retenção Consórcio";
-        break;
-      case "Poupanca":
-        transfSkill = "POUPANÇA";
-        break;
-      case "RetencaoSeguros":
-        transfSkill = "RETENÇÃO SEGUROS";
-        break;
-      case "RetencaoCartao":
-        transfSkill = "RETENÇÃO CARTÃO";
-        break;
-      case "UraCartoes":
-        transfSkill = "URA CARTÕES";
-        break;
-      case "UraCartoesBlack":
-        transfSkill = "URA CARTÕES BLACK";
-        break;
-      case "UraConsorcio":
-        transfSkill = "URA Consórcio";
-        break;
-      case "UraCoopera":
-        transfSkill = "URA COOPERA";
-        break;
-      case "UraCartoesCresol":
-        transfSkill = "URA CARTÕES CRESOL";
-        break;
-      case "UraLojistaCabal":
-        transfSkill = "URA LOJISTA CABAL";
-        break;
-      case "UraSipag1":
-        transfSkill = "URA SIPAG 1.0";
-        break;
-      case "UraSipag2":
-        transfSkill = "URA SIPAG 2.0";
-        break;
-      default:
-        transfSkill = "";
-        break;
-    }
+    let transfSkill = getTransferSkill(opTransf);
  
     const result = confirm("Realmente deseja transferir para " + transfSkill + "?");
     if (result) {
@@ -183,50 +112,43 @@ function showPopup() {
   }
 }
  
-function confirmTransfer() {
-  const opTransf = document.getElementById('ListaTransf').value;
-  if (!opTransf) return alert("Nenhuma opção selecionada.");
- 
+// Obter a skill de transferência com base na opção
+function getTransferSkill(opTransf) {
   const skillConfig = {
-    skills: {
-      "SacContestacao": "25166580 - SAC Contestação",
-      "RetencaoSipag": "23121572 - Retenção Sipag",
-      "ConsorcioRetencao": " - Retenção Consórcio",
-      "UraPuc": "URA PUC",
-      "UraCoopcerto": "URA COOPCERTO",
-      "1": "1 - Retenção Consórcio",
-      "Poupanca": "POUPANÇA",
-      "RetencaoSeguros": "RETENÇÃO SEGUROS",
-      "RetencaoCartao": "RETENÇÃO CARTÃO",
-      "UraCartoes": "URA CARTÕES",
-      "UraCartoesBlack": "URA CARTÕES BLACK",
-      "UraConsorcio": "URA Consórcio",
-      "UraCoopera": "URA COOPERA",
-      "UraCartoesCresol": "URA CARTÕES CRESOL",
-      "UraLojistaCabal": "URA LOJISTA CABAL",
-      "UraSipag1": "URA SIPAG 1.0",
-      "UraSipag2": "URA SIPAG 2.0"
-    }
+    "SacContestacao": "25166580 - SAC Contestação",
+    "RetencaoSipag": "23121572 - Retenção Sipag",
+    "ConsorcioRetencao": " - Retenção Consórcio",
+    "UraPuc": "URA PUC",
+    "UraCoopcerto": "URA COOPCERTO",
+    "Poupanca": "POUPANÇA",
+    "RetencaoSeguros": "RETENÇÃO SEGUROS",
+    "RetencaoCartao": "RETENÇÃO CARTÃO",
+    "UraCartoes": "URA CARTÕES",
+    "UraCartoesBlack": "URA CARTÕES BLACK",
+    "UraConsorcio": "URA Consórcio",
+    "UraCoopera": "URA COOPERA",
+    "UraCartoesCresol": "URA CARTÕES CRESOL",
+    "UraLojistaCabal": "URA LOJISTA CABAL",
+    "UraSipag1": "URA SIPAG 1.0",
+    "UraSipag2": "URA SIPAG 2.0"
   };
  
-  const transfSkill = skillConfig.skills[opTransf];
+  return skillConfig[opTransf] || "";
+}
+ 
+function confirmTransfer() {
+  const opTransf = document.getElementById('ListaTransf').value;
+  const transfSkill = getTransferSkill(opTransf);
   if (transfSkill) {
     document.getElementById('openConfirmation').value = "transf";
     console.log('Transferência confirmada para:', transfSkill);
   }
 }
  
- 
- 
 document.getElementById('openConfirmation').addEventListener('click', showPopup);
  
-// Botão "Pesquisa"
-document.getElementById("btnPesquisa").addEventListener("click", function () {
-  this.value = "pesquisa";
-});
- 
 // Habilitar/desabilitar botão baseado na seleção
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   const selectElement = document.getElementById('ListaTransf');
   const button = document.getElementById('openConfirmation');
  
@@ -235,19 +157,16 @@ document.addEventListener('DOMContentLoaded', function() {
   button.style.cursor = "not-allowed";
  
   // Adicionar evento para habilitar/desabilitar o botão quando houver mudança no select
-  selectElement.addEventListener('change', function() {
-    if (selectElement.value !== "") {
-      button.disabled = false;
-      button.style.cursor = "pointer";
-    } else {
-      button.disabled = true;
-      button.style.cursor = "not-allowed";
-    }
+  selectElement.addEventListener('change', function () {
+    button.disabled = selectElement.value === "";
+    button.style.cursor = selectElement.value === "" ? "not-allowed" : "pointer";
   });
 });
  
+// Atualizar as opções do select com base na skill
+const skillValue = document.getElementById("SkillT").value;
  
-// Opções para o select
+// Opções para o select, incluindo a opção SAC_CONTESTAÇÃO com a skill necessária
 const allOptions = [
   { value: "", text: "Lista de Transferência:" },
   { value: "UraPuc", text: "URA PUC" },
@@ -268,16 +187,12 @@ const allOptions = [
   { value: "SacContestacao", text: "SAC_CONTESTAÇÃO", requiresSkill: "25166580" }
 ];
  
-// Variável global
-const globalSkill = "25166580"; // Defina aqui conforme necessário
+// Filtrar as opções para garantir que a opção "SAC_CONTESTAÇÃO" seja exibida apenas se a skill for 25166580
+const filteredOptions = allOptions.filter(option => !option.requiresSkill || option.requiresSkill === skillValue);
  
-// Filtrar opções com base na skill
-const filteredOptions = allOptions.filter(option =>
-  !option.requiresSkill || option.requiresSkill === globalSkill
-);
- 
-// Renderizar no select
-const selectElement = document.createElement("select");
+// Atualizar o select com as opções filtradas
+const selectElement = document.getElementById("ListaTransf");
+selectElement.innerHTML = ""; // Limpar o conteúdo existente
  
 filteredOptions.forEach(option => {
   const optionElement = document.createElement("option");
@@ -286,26 +201,4 @@ filteredOptions.forEach(option => {
   selectElement.appendChild(optionElement);
 });
  
-// Adiciona o select ao body ou a outro container
-document.body.appendChild(selectElement);
- 
-// Obter o valor do input SkillT
-const skillValue = document.getElementById("SkillT").value;
- 
-// Obter o select
-const select = document.getElementById("ListaTransf");
- 
-// Limpar o select para evitar duplicação
-select.innerHTML = "";
- 
-// Filtrar as opções para remover a que está em skillValue
-const optionsToShow = allOptions.filter(option => option.value !== skillValue);
- 
-// Adicionar as opções ao select
-optionsToShow.forEach(option => {
-  const opt = document.createElement("option");
-  opt.value = option.value;
-  opt.textContent = option.text;
-  select.appendChild(opt);
-});
  
