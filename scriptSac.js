@@ -2,24 +2,35 @@
 function copyToClipboard(elementId) {
   var copyText = document.getElementById(elementId);
   if (copyText) {
-    navigator.clipboard.writeText(copyText.value).then(() => {
-      console.log("Copiado pelo botão: " + copyText.value);
-    }).catch(err => console.error("Erro ao copiar: ", err));
+    copyText.select();
+    document.execCommand("copy");
+    console.log("Copiado pelo botão: " + copyText.value);
   }
 }
  
 // Função de copiar texto ao clicar no campo
 function copyOnClick(event) {
   var copyText = event.target;
-  navigator.clipboard.writeText(copyText.value).then(() => {
-    console.log("Copiado com clique: " + copyText.value);
-  }).catch(err => console.error("Erro ao copiar: ", err));
+  copyText.select();
+  document.execCommand("copy");
+  console.log("Copiado com clique: " + copyText.value);
 }
  
 const inputs = document.querySelectorAll('input[type="text"]');
+ 
 inputs.forEach(input => {
   input.addEventListener('click', copyOnClick);
 });
+ 
+// Função de copiar texto ao focar no campo
+function copyOnFocus(elementId) {
+  var copyText = document.getElementById(elementId);
+  if (copyText) {
+    copyText.select();
+    document.execCommand("copy");
+    console.log("Copiado com foco: " + copyText.value);
+  }
+}
  
 // Função de preencher o dropdown de "Navegação"
 function populateDropdown() {
@@ -230,5 +241,15 @@ const openConfirmationButton = document.getElementById('openConfirmation');
 if (openConfirmationButton) {
   openConfirmationButton.addEventListener('click', showPopup);
 }
+ 
+// Botão "Pesquisa"
+document.getElementById("btnPesquisa").addEventListener("click", function () {
+  this.value = "pesquisa";
+});
+ 
+document.getElementById('MotivoDesc').addEventListener('change', function () {
+  console.log("Motivo selecionado:", this.value);
+});
+ 
  
  
