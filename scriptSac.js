@@ -184,11 +184,36 @@ const allOptions = [
   { value: "UraLojistaCabal", text: "URA LOJISTA CABAL" },
   { value: "UraSipag1", text: "URA SIPAG 1.0" },
   { value: "UraSipag2", text: "URA SIPAG 2.0" },
-  { value: "SacContestacao", text: "SAC_CONTESTAÇÃO", requiresSkill: "25166580" }
+  { value: "SacContestacao", text: "SAC_CONTESTAÇÃO"}
+];
+ 
+const allOptions2 = [
+  { value: "", text: "Lista de Transferência:" },
+  { value: "UraPuc", text: "URA PUC" },
+  { value: "UraCoopcerto", text: "URA COOPCERTO" },
+  { value: "RetencaoSipag", text: "RETENÇÃO SIPAG" },
+  { value: "ConsorcioRetencao", text: "RETENCAO CONSÓRCIO" },
+  { value: "Poupanca", text: "POUPANÇA" },
+  { value: "RetencaoSeguros", text: "RETENÇÃO SEGUROS" },
+  { value: "RetencaoCartao", text: "RETENÇÃO CARTÃO" },
+  { value: "UraCartoes", text: "URA CARTÕES" },
+  { value: "UraCartoesBlack", text: "URA CARTÕES BLACK" },
+  { value: "UraConsorcio", text: "URA Consórcio" },
+  { value: "UraCoopera", text: "URA COOPERA" },
+  { value: "UraCartoesCresol", text: "URA CARTÕES CRESOL" },
+  { value: "UraLojistaCabal", text: "URA LOJISTA CABAL" },
+  { value: "UraSipag1", text: "URA SIPAG 1.0" },
+  { value: "UraSipag2", text: "URA SIPAG 2.0" },
 ];
  
 // Filtrar as opções para garantir que a opção "SAC_CONTESTAÇÃO" seja exibida apenas se a skill for 25166580
-const filteredOptions = allOptions.filter(option => !option.requiresSkill || option.requiresSkill === skillValue);
+ 
+let filteredOptions;
+if (skillValue == 25166183) {
+  filteredOptions = allOptions;
+} else {
+  filteredOptions = allOptions2;
+}
  
 // Atualizar o select com as opções filtradas
 const selectElement = document.getElementById("ListaTransf");
@@ -200,5 +225,10 @@ filteredOptions.forEach(option => {
   optionElement.textContent = option.text;
   selectElement.appendChild(optionElement);
 });
+ 
+const openConfirmationButton = document.getElementById('openConfirmation');
+if (openConfirmationButton) {
+  openConfirmationButton.addEventListener('click', showPopup);
+}
  
  
