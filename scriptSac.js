@@ -181,40 +181,40 @@ const skillValue = document.getElementById("SkillT").value;
 const allOptions = [
   { value: "", text: "Lista de Transferência:" },
   { value: "UraPuc", text: "URA PUC" },
-  { value: "UraCoopcerto", text: "URA COOPCERTO" },
-  { value: "RetencaoSipag", text: "RETENÇÃO SIPAG" },
-  { value: "ConsorcioRetencao", text: "RETENCAO CONSÓRCIO" },
-  { value: "Poupanca", text: "POUPANÇA" },
-  { value: "RetencaoSeguros", text: "RETENÇÃO SEGUROS" },
-  { value: "RetencaoCartao", text: "RETENÇÃO CARTÃO" },
-  { value: "UraCartoes", text: "URA CARTÕES" },
-  { value: "UraCartoesBlack", text: "URA CARTÕES BLACK" },
+  { value: "UraCoopcerto", text: "URA Coopcerto" },
+  { value: "RetencaoSipag", text: "Retenção Sipag" },
+  { value: "ConsorcioRetencao", text: "Retenção Consórcio" },
+  { value: "Poupanca", text: "Poupança" },
+  { value: "RetencaoSeguros", text: "Retenção Seguros" },
+  { value: "RetencaoCartao", text: "Retenção Cartão" },
+  { value: "UraCartoes", text: "URA Cartões" },
+  { value: "UraCartoesBlack", text: "URA Cartões Black" },
   { value: "UraConsorcio", text: "URA Consórcio" },
-  { value: "UraCoopera", text: "URA COOPERA" },
-  { value: "UraCartoesCresol", text: "URA CARTÕES CRESOL" },
-  { value: "UraLojistaCabal", text: "URA LOJISTA CABAL" },
-  { value: "UraSipag1", text: "URA SIPAG 1.0" },
-  { value: "UraSipag2", text: "URA SIPAG 2.0" },
-  { value: "SacContestacao", text: "SAC_CONTESTAÇÃO"}
+  { value: "UraCoopera", text: "URA Coopera" },
+  { value: "UraCartoesCresol", text: "URA Cartões Cresol" },
+  { value: "UraLojistaCabal", text: "URA Lojista Cabal" },
+  { value: "UraSipag1", text: "URA Sipag 1.0" },
+  { value: "UraSipag2", text: "URA Sipag 2.0" },
+  { value: "SacContestacao", text: "SAC Contestação"}
 ];
  
 const allOptions2 = [
   { value: "", text: "Lista de Transferência:" },
   { value: "UraPuc", text: "URA PUC" },
-  { value: "UraCoopcerto", text: "URA COOPCERTO" },
-  { value: "RetencaoSipag", text: "RETENÇÃO SIPAG" },
-  { value: "ConsorcioRetencao", text: "RETENCAO CONSÓRCIO" },
-  { value: "Poupanca", text: "POUPANÇA" },
-  { value: "RetencaoSeguros", text: "RETENÇÃO SEGUROS" },
-  { value: "RetencaoCartao", text: "RETENÇÃO CARTÃO" },
-  { value: "UraCartoes", text: "URA CARTÕES" },
-  { value: "UraCartoesBlack", text: "URA CARTÕES BLACK" },
+  { value: "UraCoopcerto", text: "URA Coopcerto" },
+  { value: "RetencaoSipag", text: "Retenção Sipag" },
+  { value: "ConsorcioRetencao", text: "Retenção Consórcio" },
+  { value: "Poupanca", text: "Poupança" },
+  { value: "RetencaoSeguros", text: "Retenção Seguros" },
+  { value: "RetencaoCartao", text: "Retenção Cartão" },
+  { value: "UraCartoes", text: "URA Cartões" },
+  { value: "UraCartoesBlack", text: "URA Cartões Black" },
   { value: "UraConsorcio", text: "URA Consórcio" },
-  { value: "UraCoopera", text: "URA COOPERA" },
-  { value: "UraCartoesCresol", text: "URA CARTÕES CRESOL" },
-  { value: "UraLojistaCabal", text: "URA LOJISTA CABAL" },
-  { value: "UraSipag1", text: "URA SIPAG 1.0" },
-  { value: "UraSipag2", text: "URA SIPAG 2.0" },
+  { value: "UraCoopera", text: "URA Coopera" },
+  { value: "UraCartoesCresol", text: "URA Cartões Cresol" },
+  { value: "UraLojistaCabal", text: "URA Lojista Cabal" },
+  { value: "UraSipag1", text: "URA Sipag 1.0" },
+  { value: "UraSipag2", text: "URA Sipag 2.0" },
 ];
  
 // Filtrar as opções para garantir que a opção "SAC_CONTESTAÇÃO" seja exibida apenas se a skill for 25166580
@@ -250,6 +250,8 @@ document.getElementById("btnPesquisa").addEventListener("click", function () {
 document.getElementById('MotivoDesc').addEventListener('change', function () {
   console.log("Motivo selecionado:", this.value);
 });
+
+//testrefdfdfsdfDSF
  
  
  
