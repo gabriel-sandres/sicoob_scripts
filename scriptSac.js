@@ -179,42 +179,37 @@ const skillValue = document.getElementById("SkillT").value;
  
 // Opções para o select, incluindo a opção SAC_CONTESTAÇÃO com a skill necessária
 const allOptions = [
+  
+  
   { value: "", text: "Lista de Transferência:" },
+  { value: "SacContestacao", text: "SAC Contestação"},
   { value: "UraPuc", text: "URA PUC" },
-  { value: "UraCoopcerto", text: "URA Coopcerto" },
-  { value: "RetencaoSipag", text: "Retenção Sipag" },
-  { value: "ConsorcioRetencao", text: "Retenção Consórcio" },
-  { value: "Poupanca", text: "Poupança" },
-  { value: "RetencaoSeguros", text: "Retenção Seguros" },
-  { value: "RetencaoCartao", text: "Retenção Cartão" },
   { value: "UraCartoes", text: "URA Cartões" },
-  { value: "UraCartoesBlack", text: "URA Cartões Black" },
   { value: "UraConsorcio", text: "URA Consórcio" },
+  { value: "UraCoopcerto", text: "URA Coopcerto" },
   { value: "UraCoopera", text: "URA Coopera" },
-  { value: "UraCartoesCresol", text: "URA Cartões Cresol" },
   { value: "UraLojistaCabal", text: "URA Lojista Cabal" },
-  { value: "UraSipag1", text: "URA Sipag 1.0" },
-  { value: "UraSipag2", text: "URA Sipag 2.0" },
-  { value: "SacContestacao", text: "SAC Contestação"}
+  { value: "UraSipag2", text: "URA Sipag" }, /*Era a 2.0*/
+  { value: "RetencaoCartao", text: "Retenção Cartões" },
+  { value: "ConsorcioRetencao", text: "Retenção Consórcio" },
+  { value: "RetencaoSeguros", text: "Retenção Seguros" },
+  { value: "RetencaoSipag", text: "Retenção Sipag" },
+  
 ];
  
 const allOptions2 = [
   { value: "", text: "Lista de Transferência:" },
   { value: "UraPuc", text: "URA PUC" },
-  { value: "UraCoopcerto", text: "URA Coopcerto" },
-  { value: "RetencaoSipag", text: "Retenção Sipag" },
-  { value: "ConsorcioRetencao", text: "Retenção Consórcio" },
-  { value: "Poupanca", text: "Poupança" },
-  { value: "RetencaoSeguros", text: "Retenção Seguros" },
-  { value: "RetencaoCartao", text: "Retenção Cartão" },
   { value: "UraCartoes", text: "URA Cartões" },
-  { value: "UraCartoesBlack", text: "URA Cartões Black" },
   { value: "UraConsorcio", text: "URA Consórcio" },
+  { value: "UraCoopcerto", text: "URA Coopcerto" },
   { value: "UraCoopera", text: "URA Coopera" },
-  { value: "UraCartoesCresol", text: "URA Cartões Cresol" },
   { value: "UraLojistaCabal", text: "URA Lojista Cabal" },
-  { value: "UraSipag1", text: "URA Sipag 1.0" },
-  { value: "UraSipag2", text: "URA Sipag 2.0" },
+  { value: "UraSipag2", text: "URA Sipag" }, /*Era a 2.0*/
+  { value: "RetencaoCartao", text: "Retenção Cartões" },
+  { value: "ConsorcioRetencao", text: "Retenção Consórcio" },
+  { value: "RetencaoSeguros", text: "Retenção Seguros" },
+  { value: "RetencaoSipag", text: "Retenção Sipag" },
 ];
  
 // Filtrar as opções para garantir que a opção "SAC_CONTESTAÇÃO" seja exibida apenas se a skill for 25166580
