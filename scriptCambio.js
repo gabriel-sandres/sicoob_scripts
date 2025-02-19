@@ -7,7 +7,7 @@ function copyToClipboard(elementId) {
     console.log("Copiado pelo botão: " + copyText.value);
   }
 }
-
+ 
 // Função de copiar texto ao clicar no campo
 function copyOnClick(event) {
   var copyText = event.target;
@@ -15,16 +15,16 @@ function copyOnClick(event) {
   document.execCommand("copy");
   console.log("Copiado com clique: " + copyText.value);
 }
-
-
+ 
+ 
 const inputs = document.querySelectorAll('input[type="text"]');
-
-
+ 
+ 
 inputs.forEach(input => {
   input.addEventListener('click', copyOnClick);
 });
-
-
+ 
+ 
 // Função de copiar texto ao focar no campo
 function copyOnFocus(elementId) {
   var copyText = document.getElementById(elementId);
@@ -34,7 +34,7 @@ function copyOnFocus(elementId) {
     console.log("Copiado com foco: " + copyText.value);
   }
 }
-
+ 
 // Função de preencher o dropdown de "Navegação"
 function populateDropdown() {
   var caminhoElement = document.getElementById('Caminho');
@@ -42,9 +42,9 @@ function populateDropdown() {
     var caminho = caminhoElement.value;
     var caminhoArray = caminho.split(',');
     var select = document.getElementById('caminhoNav');
-
+ 
     select.innerHTML = '';
-
+ 
     var defaultOption = document.createElement('option');
     defaultOption.value = "";
     defaultOption.text = "Navegação:";
@@ -52,7 +52,7 @@ function populateDropdown() {
     defaultOption.disabled = true;
     defaultOption.style.color = "#000000";
     select.appendChild(defaultOption);
-
+ 
     caminhoArray.forEach(function (item) {
       var option = document.createElement('option');
       option.value = item.trim();
@@ -63,17 +63,17 @@ function populateDropdown() {
     });
   }
 }
-
+ 
 // Exibir skill de entrada
 const skillOrigemElement = document.getElementById('SkillOrigem');
-
-
+ 
+ 
 // Botão "Pesquisa"
 document.getElementById("btnPesquisa").addEventListener("click", function () {
   this.value = "pesquisa";
 });
-
-
+ 
+ 
 // Adicionar as opções ao select
 optionsToShow.forEach(option => {
   const opt = document.createElement("option");
@@ -81,3 +81,4 @@ optionsToShow.forEach(option => {
   opt.textContent = option.text;
   select.appendChild(opt);
 });
+ 
