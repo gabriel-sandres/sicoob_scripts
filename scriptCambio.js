@@ -41,7 +41,7 @@ function populateDropdown() {
   if (caminhoElement) {
     var caminho = caminhoElement.value;
     var caminhoArray = caminho.split(',');
-    var select = document.getElementById('navegacaoURA');
+    var select = document.getElementById('caminhoNav');
 
     select.innerHTML = '';
 
