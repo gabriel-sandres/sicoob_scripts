@@ -16,14 +16,11 @@ function copyOnClick(event) {
   console.log("Copiado com clique: " + copyText.value);
 }
 
-
 const inputs = document.querySelectorAll('input[type="text"]');
-
 
 inputs.forEach(input => {
   input.addEventListener('click', copyOnClick);
 });
-
 
 // Função de copiar texto ao focar no campo
 function copyOnFocus(elementId) {
@@ -63,6 +60,12 @@ function populateDropdown() {
     });
   }
 }
+
+window.onload = function () {
+  // Preencher dropdown
+  populateDropdown();
+}
+
 
 // Exibir skill de entrada
 const skillOrigemElement = document.getElementById('SkillOrigem');
