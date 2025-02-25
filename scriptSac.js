@@ -245,8 +245,6 @@ document.getElementById("btnPesquisa").addEventListener("click", function () {
 document.getElementById('MotivoDesc').addEventListener('change', function () {
   console.log("Motivo selecionado:", this.value);
 });
-
-//testrefdfdfsdfDSF
  
  
  
