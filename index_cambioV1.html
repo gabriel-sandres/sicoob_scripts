@@ -6,86 +6,6 @@
 </head>
 
 <body>
-  <!-- Overlay escurecido -->
-  <div id="overlay" style="
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.7);
-      z-index: 999;
-      cursor: not-allowed;
-    "></div>
-
-  <!-- Modal de Gravação -->
-  <div id="recordingModal" style="
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 60%;
-      max-width: 400px;
-      background-color: #e6e6e6;
-      padding: 15px;
-      border-radius: 10px;
-      z-index: 1000;
-      border: 6px solid #003642;
-      box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5);
-    ">
-    <div style="width: 100%; color: #003642; text-align: center">
-      <div style="
-          font-family: Arial, Helvetica, sans-serif;
-          font-weight: bold;
-          font-size: 22px;
-          text-align: center;
-          margin-bottom: 10px;
-          color: #003642;
-        ">
-        Aviso ao Operador
-      </div>
-      <div style="
-          font-family: Arial, Helvetica, sans-serif;
-          margin-top: 10px;
-          text-align: center;
-          font-size: 14px;
-          color: #003642;
-        ">
-        <p style="margin: 5px 0; font-size: medium">
-          Sua tela está sendo gravada.
-        </p>
-        <p style="margin: 5px 0; font-size: medium">
-          Certifique-se de que informações pessoais ou confidenciais não
-          estejam visíveis.
-        </p>
-        <p style="margin: 5px 0; font-size: medium">
-          Por favor, confirme que está ciente da gravação.
-        </p>
-      </div>
-      <div onclick="confirmRecording()" style="
-          font-family: Arial, Helvetica, sans-serif;
-          background-color: #e6e6e6;
-          color: #003642;
-          border: 2px solid #003642;
-          padding: 8px 20px;
-          border-radius: 20px;
-          cursor: pointer;
-          margin-top: 15px;
-          font-size: 16px;
-          font-weight: bold;
-          margin: 15px auto 0;
-          display: block;
-          transition: all 0.2s ease-in-out;
-          width: 30%;
-        " onmouseover="this.style.backgroundColor='#003642'; this.style.color='white'"
-        onmouseout="this.style.backgroundColor='#e6e6e6'; this.style.color='black'">
-        Estou Ciente
-      </div>
-    </div>
-  </div>
-
   <div style="
           display: flex;
           justify-content: center;
@@ -349,7 +269,7 @@
           </div> -->
 
 
-          <!-- <div style="
+       <!-- <div style="
                       display: flex;
                       align-items: center;
                       width: 100%;
@@ -437,14 +357,20 @@
                           margin-left: 10px;">Encerrar</button>
           </div>
 
-          <input type="text" id="Caminho" name="Caminho" value="{global:caminhoura}"
-            style="opacity: 0; cursor: default;">
+
+
+
+
+
+          <input type="text" id="Caminho" name="Caminho" value="{global:caminhoura}" style="opacity: 0; cursor: default;">
           <input type="text" id="SkillT" name="SkillT" value="{global:skill}" style="opacity: 0; cursor: default;">
+
 
         </div>
       </div>
     </div>
   </div>
+  <!-- <script type="text/javascript" src="script.js"></script> -->
   <script type="text/javascript" src="https://gabriel-sandres.github.io/sicoob_scripts/scriptCambio.js"></script>
 </body>
 
