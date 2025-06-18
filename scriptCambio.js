@@ -1,10 +1,10 @@
 // Funções utilitárias
 function copyToClipboard(elementId) {
-  var copyText = document.getElementById(elementId);
-  if (copyText) {
-    copyText.select();
-    document.execCommand("copy");
-    console.log("Copiado pelo botão: " + copyText.value);
+    var copyText = document.getElementById(elementId);
+    if (copyText) {
+      copyText.select();
+      document.execCommand("copy");
+      console.log("Copiado pelo botão: " + copyText.value);
   }
 }
 
@@ -22,6 +22,71 @@ function copyOnFocus(elementId) {
     document.execCommand("copy");
     console.log("Copiado com foco: " + copyText.value);
   }
+}
+
+// Função auxiliar para criar opções
+function createOption(value, text) {
+  const option = document.createElement("option");
+  option.value = value;
+  option.textContent = text;
+  return option;
+}
+
+// Configuração de skills
+const skillConfig = {
+  skills: {
+    29221007: "Cambio Fechamento Operacao",
+    29220975: "Cambio Cotacao Moeda",
+    29220937: "Cambio Duvidas No Processo",
+  },
+
+  transferOptions: {
+    29221007: [
+      { value: "29220975", text: "Cambio Cotacao Moeda" },
+      { value: "29220937", text: "Cambio Duvidas No Processo" },
+    ],
+    29220975: [
+      { value: "29221007", text: "Cambio Fechamento Operacao" },
+      { value: "29220937", text: "Cambio Duvidas No Processo" },
+    ],
+    29220937: [
+      { value: "29221007", text: "Cambio Fechamento Operacao" },
+      { value: "29220975", text: "Cambio Cotacao Moeda" },
+    ],
+    default: [
+      { value: "29221007", text: "Cambio Fechamento Operacao" },
+      { value: "29220975", text: "Cambio Cotacao Moeda" },
+      { value: "29220937", text: "Cambio Duvidas No Processo" },
+    ],
+  },
+};
+
+// Gerenciar transferências
+function setupTransfers() {
+  const skillValue = document.getElementById("SkillT").value;
+  const select = document.getElementById("ListaTransf");
+  
+  console.log("SkillT value:", skillValue);
+  console.log("ListaTransf element:", select);
+  
+  const options =
+    skillConfig.transferOptions[skillValue] ||
+    skillConfig.transferOptions.default;
+
+  console.log("Options to show:", options);
+
+  select.innerHTML = "";
+  select.appendChild(
+    createOption("", "Lista de Transferência:")
+  ).disabled = true;
+
+  options.forEach((opt) => {
+    if (opt.value !== skillValue) {
+      select.appendChild(createOption(opt.value, opt.text));
+    }
+  });
+  
+  console.log("SetupTransfers completed. Options added:", select.options.length);
 }
 
 function populateDropdown() {
@@ -51,6 +116,34 @@ function populateDropdown() {
         select.appendChild(option);
       });
     }
+  }
+}
+
+// Controle de transferência
+function handleTransfer() {
+  const select = document.getElementById("ListaTransf");
+  const button = document.getElementById("openConfirmation");
+
+  button.disabled = !select.value;
+  button.style.cursor = select.value ? "pointer" : "not-allowed";
+
+  select.addEventListener("change", () => {
+    button.disabled = !select.value;
+    button.style.cursor = select.value ? "pointer" : "not-allowed";
+  });
+}
+
+// Confirmar transferência
+function confirmTransfer() {
+  const opTransf = document.getElementById("ListaTransf").value;
+  if (!opTransf) return alert("Nenhuma opção selecionada.");
+
+  const skillName =
+    skillConfig.skills[opTransf];
+
+  if (confirm(`Realmente deseja transferir para ${skillName}?`)) {
+    document.getElementById("openConfirmation").value = "transf";
+    console.log("Transferência confirmada para:", skillName);
   }
 }
 
@@ -93,7 +186,7 @@ window.addEventListener('load', function () {
   }
 
   // Botão finalizar
-  const btnFinalizar = document.getElementById("btnFinalizar");
+  const btnFinalizar = document.getElementById("btnPesquisa");
   if (btnFinalizar) {
     btnFinalizar.addEventListener("click", function () {
       this.value = "finalizar";
