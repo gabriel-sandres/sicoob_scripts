@@ -35,28 +35,16 @@ function createOption(value, text) {
 // Configuração de skills
 const skillConfig = {
   skills: {
-    29221007: "Cambio Fechamento Operacao",
-    29220975: "Cambio Cotacao Moeda",
-    29220937: "Cambio Duvidas No Processo",
+    25166519: "Cambio Fechamento Operacao",
+    25166577: "Cambio Cotacao Moeda",
+    25166578: "Cambio Duvidas No Processo",
   },
 
   transferOptions: {
-    29221007: [
-      { value: "29220975", text: "Cambio Cotacao Moeda" },
-      { value: "29220937", text: "Cambio Duvidas No Processo" },
-    ],
-    29220975: [
-      { value: "29221007", text: "Cambio Fechamento Operacao" },
-      { value: "29220937", text: "Cambio Duvidas No Processo" },
-    ],
-    29220937: [
-      { value: "29221007", text: "Cambio Fechamento Operacao" },
-      { value: "29220975", text: "Cambio Cotacao Moeda" },
-    ],
     default: [
-      { value: "29221007", text: "Cambio Fechamento Operacao" },
-      { value: "29220975", text: "Cambio Cotacao Moeda" },
-      { value: "29220937", text: "Cambio Duvidas No Processo" },
+      { value: "25166519 ", text: "Cambio Fechamento Operacao" },
+      { value: "25166577 ", text: "Cambio Cotacao Moeda" },
+      { value: "25166578 ", text: "Cambio Duvidas No Processo" },
     ],
   },
 };
@@ -65,23 +53,27 @@ const skillConfig = {
 function setupTransfers() {
   const skillValue = document.getElementById("SkillT").value;
   const select = document.getElementById("ListaTransf");
+  
+  console.log("SkillT value:", skillValue);
+  console.log("ListaTransf element:", select);
+  
+  const options =
+    skillConfig.transferOptions[skillValue] ||
+    skillConfig.transferOptions.default;
 
-  // Lista completa de opções
-  const allOptions = skillConfig.transferOptions.default;
+  console.log("Options to show:", options);
 
   select.innerHTML = "";
   select.appendChild(
     createOption("", "Lista de Transferência:")
   ).disabled = true;
 
-  allOptions.forEach((opt) => {
+  options.forEach((opt) => {
     if (opt.value !== skillValue) {
       select.appendChild(createOption(opt.value, opt.text));
     }
   });
-
-  console.log("SkillT value:", skillValue);
-  console.log("Options to show:", allOptions.filter(opt => opt.value !== skillValue));
+  
   console.log("SetupTransfers completed. Options added:", select.options.length);
 }
 
