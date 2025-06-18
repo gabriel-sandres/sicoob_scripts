@@ -41,10 +41,22 @@ const skillConfig = {
   },
 
   transferOptions: {
+    25166519: [
+      { value: "25166577", text: "Cambio Cotacao Moeda" },
+      { value: "25166578", text: "Cambio Duvidas No Processo" },
+    ],
+    25166577: [
+      { value: "25166519", text: "Cambio Fechamento Operacao" },
+      { value: "25166578", text: "Cambio Duvidas No Processo" },
+    ],
+    25166578: [
+      { value: "25166519", text: "Cambio Fechamento Operacao" },
+      { value: "25166577", text: "Cambio Cotacao Moeda" },
+    ],
     default: [
-      { value: "25166519 ", text: "Cambio Fechamento Operacao" },
-      { value: "25166577 ", text: "Cambio Cotacao Moeda" },
-      { value: "25166578 ", text: "Cambio Duvidas No Processo" },
+      { value: "25166519", text: "Cambio Fechamento Operacao" },
+      { value: "25166577", text: "Cambio Cotacao Moeda" },
+      { value: "25166578", text: "Cambio Duvidas No Processo" },
     ],
   },
 };
