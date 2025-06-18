@@ -65,27 +65,23 @@ const skillConfig = {
 function setupTransfers() {
   const skillValue = document.getElementById("SkillT").value;
   const select = document.getElementById("ListaTransf");
-  
-  console.log("SkillT value:", skillValue);
-  console.log("ListaTransf element:", select);
-  
-  const options =
-    skillConfig.transferOptions[skillValue] ||
-    skillConfig.transferOptions.default;
 
-  console.log("Options to show:", options);
+  // Lista completa de opções
+  const allOptions = skillConfig.transferOptions.default;
 
   select.innerHTML = "";
   select.appendChild(
     createOption("", "Lista de Transferência:")
   ).disabled = true;
 
-  options.forEach((opt) => {
+  allOptions.forEach((opt) => {
     if (opt.value !== skillValue) {
       select.appendChild(createOption(opt.value, opt.text));
     }
   });
-  
+
+  console.log("SkillT value:", skillValue);
+  console.log("Options to show:", allOptions.filter(opt => opt.value !== skillValue));
   console.log("SetupTransfers completed. Options added:", select.options.length);
 }
 
