@@ -8,6 +8,21 @@ function copyToClipboard(elementId) {
   }
 }
 
+// Modal
+const modal = document.getElementById("recordingModal");
+const overlay = document.getElementById("overlay");
+if (modal && overlay) {
+  modal.style.display = "block";
+  overlay.style.display = "block";
+} else {
+  console.warn("Modal ou overlay não encontrados.");
+}
+
+function confirmRecording() {
+  document.getElementById("recordingModal").style.display = "none";
+  document.getElementById("overlay").style.display = "none";
+}
+
 // Função de copiar texto ao clicar no campo
 function copyOnClick(event) {
   var copyText = event.target;
@@ -66,10 +81,8 @@ window.onload = function () {
   populateDropdown();
 }
 
-
 // Exibir skill de entrada
 const skillOrigemElement = document.getElementById('SkillOrigem');
-
 
 // Botão "Pesquisa"
 document.getElementById("btnPesquisa").addEventListener("click", function () {
@@ -79,7 +92,6 @@ document.getElementById("btnPesquisa").addEventListener("click", function () {
 document.getElementById('MotivoDesc').addEventListener('change', function () {
   console.log("Motivo selecionado:", this.value);
 });
-
 
 // Adicionar as opções ao select
 optionsToShow.forEach(option => {
