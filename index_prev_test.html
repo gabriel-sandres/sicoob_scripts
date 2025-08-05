@@ -196,73 +196,60 @@
                           cursor: pointer;
                           margin-left: 10px;" onclick="copyToClipboard('Telefone')">Copiar</div>
           </div>
-
-          <!--<div style="
-                      display: flex;
-                      align-items: center;
-                      width: 100%;
-                      margin-bottom: 10px;">
-            <label for="Opcao" style="
-                          font-weight: bold;
-                          width: 150px;
-                          text-align: right;
-                          margin-right: 8px;">Opção de Origem:</label>
-            <input type="text" id="Opcao" name="Opcao" readonly value="{global:nav}" onfocus="copyOnFocus('Opcao')"
+          
+          <div
               style="
-                          border: 1px solid #696969;
-                          background-color: #e6e6e6;
-                          border-radius: 5px;
-                          padding: 5px;
-                          height: 25px;
-                          flex-grow: 1;
-                          font-size: 16px;">
-            <div style="
-                          width: 70px;
-                          padding: 5px;
-                          text-align: center;
-                          border: none;
-                          background-color: #003641;
-                          color: #ffffff;
-                          border-radius: 5px;
-                          cursor: pointer;
-                          margin-left: 10px;" onclick="copyToClipboard('Opcao')">Copiar</div>
+                display: flex;
+                align-items: center;
+                width: 100%;
+                margin-bottom: 10px;
+              "
+            >
+              <label
+                for="ListaTransf"
+                style="
+                  font-weight: bold;
+                  width: 150px;
+                  text-align: right;
+                  margin-right: 8px;
+                "
+                >Lista de Transf.:</label
+              >
+              <select
+                id="ListaTransf"
+                style="
+                  border: 1px solid #696969;
+                  background-color: #e6e6e6;
+                  color: #000000;
+                  border-radius: 5px;
+                  padding: 5px;
+                  height: 36px;
+                  flex-grow: 1;
+                  max-width: 100%;
+                  width: 100px;
+                  font-size: 16px;
+                "
+              ></select>
+              <button
+                type="submit"
+                value="000"
+                id="openConfirmation"
+                style="
+                  width: 70px;
+                  height: 30px;
+                  padding: 5px;
+                  text-align: center;
+                  border: none;
+                  background-color: #003641;
+                  color: #ffffff;
+                  border-radius: 5px;
+                  cursor: pointer;
+                  margin-left: 10px;
+                "
+              >
+                Transferir
+              </button>
           </div>
-
-          <div style="
-                      display: flex;
-                      align-items: center;
-                      width: 100%;
-                      margin-bottom: 10px;">
-            <label for="navegacaoURA" style="
-                          font-weight: bold;
-                          width: 150px;
-                          text-align: right;
-                          margin-right: 8px;">Navegação:</label>
-            <select id="navegacaoURA" name="navegacaoURA" style="
-                          border: 1px solid #696969;
-                          background-color: #e6e6e6;
-                          color: #000000;
-                          border-radius: 5px;
-                          padding: 5px;
-                          height: 35px;
-                          max-width: 100%;
-                          width: 100px;
-                          flex-grow: 1;
-                          font-size: 16px;">
-            </select>
-
-            <div style="
-                          width: 70px;
-                          padding: 5px;
-                          text-align: center;
-                          border: none;
-                          background-color: #003641;
-                          color: #ffffff;
-                          border-radius: 5px;
-                          cursor: pointer;
-                          margin-left: 10px;" onclick="copyToClipboard('Caminho')">Copiar</div>
-
-          </div> -->
 
           <div style="
                       display: flex;
@@ -304,11 +291,6 @@
                           margin-left: 10px;">Encerrar</button>
           </div>
 
-
-
-
-
-
           <input type="text" id="Caminho" name="Caminho" value="{global:caminhoura}" style="opacity: 0; cursor: default;">
           <input type="text" id="SkillT" name="SkillT" value="{global:skill}" style="opacity: 0; cursor: default;">
 
@@ -318,7 +300,7 @@
     </div>
   </div>
   <!--<script type="text/javascript" src="scriptPrevencao.js"></script>-->
-  <script type="text/javascript" src="https://gabriel-sandres.github.io/sicoob_scripts/scriptPrevencao.js"></script>
+  <script type="text/javascript" src="https://gabriel-sandres.github.io/sicoob_scripts/scriptPrevencaoTest.js"></script>
 </body>
 
 </html>
